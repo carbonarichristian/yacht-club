@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  resources :yacht
-  resources :user do
-    resources :bookings
-  end
+  resources :yachts
+  # resources :user do
+  #   resources :bookings
+  # end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
