@@ -1,4 +1,4 @@
-class YachtController < ApplicationController
+class YachtsController < ApplicationController
 
   def index
     @yachts = Yacht.all
@@ -11,7 +11,7 @@ class YachtController < ApplicationController
   def new
     @yacht = Yacht.new
   end
-  
+
   def create
     @yacht = Yacht.new(yacht_params)
     if @yacht.save
@@ -31,9 +31,9 @@ class YachtController < ApplicationController
   def set_yacht
     @yacht = Yacht.find(params[:id])
   end
- 
+
   def yacht_params
     params.require(:list).permit(:name, :photo)
   end
-  
+
 end
