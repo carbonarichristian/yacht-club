@@ -4,9 +4,9 @@ class YachtsController < ApplicationController
     @yachts = Yacht.all
   end
 
-  # def show
-  #   @yacht = Yacht.find(params[:id])
-  # end
+  def show
+    @yacht = Yacht.find(params[:id])
+  end
 
   def new
     @yacht = Yacht.new
@@ -21,12 +21,16 @@ class YachtsController < ApplicationController
     end
   end
 
+  def edit
+    @yacht = Yacht.find(params[:id])
+  end
+
   # def destroy
   #   @yacht.destroy
   #   redirect_to yachts_path, status: :see_other
   # end
 
-  # private
+  private
 
   def set_yacht
     @yacht = Yacht.find(params[:id])
