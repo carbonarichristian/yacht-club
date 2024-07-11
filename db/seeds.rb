@@ -8,12 +8,17 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 Yacht.destroy_all
+User.destroy_all
+user = User.create!(email:"pammmm@kool.com", password:"123456")
 
-Yacht.create([
-  { name: 'Sea Breeze', model: 'Sunseeker Predator 74', price: 4500.00 },
-  { name: 'Ocean Escape', model: 'Azimut 66 Flybridge', price: 5000.00 },
-  { name: 'Wave Rider', model: 'Princess V65', price: 4700.00 },
-  { name: 'Luxury Cruiser', model: 'Ferretti 720', price: 5500.00 },
-  { name: 'Dream Catcher', model: 'Pershing 8X', price: 5300.00 },
-  { name: 'Nautical Adventure', model: 'Sanlorenzo SL86', price: 6000.00 }
-])
+yachts = [
+  { name: 'Sea Breeze', model: 'Sunseeker Predator 74', price: 4500.00, user: user },
+  { name: 'Ocean Escape', model: 'Azimut 66 Flybridge', price: 5000.00, user: user },
+  { name: 'Wave Rider', model: 'Princess V65', price: 4700.00, user: user},
+  { name: 'Luxury Cruiser', model: 'Ferretti 720', price: 5500.00, user: user},
+  { name: 'Dream Catcher', model: 'Pershing 8X', price: 5300.00, user: user},
+  { name: 'Nautical Adventure', model: 'Sanlorenzo SL86', price: 6000.00, user: user},
+]
+yachts.each do |info|
+  Yacht.create!(info)
+end

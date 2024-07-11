@@ -33,13 +33,7 @@ class YachtsController < ApplicationController
     end
    end
    
-  #
-  # def destroy
-  #   @yacht.destroy
-  #   redirect_to yachts_path, status: :see_other
-  # end
-
-  # private
+  private
 
   def set_yacht
     @yacht = Yacht.find(params[:id])
