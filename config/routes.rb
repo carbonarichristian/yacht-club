@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :yachts
-  # resources :user do
-  #   resources :bookings
-  # end
+  root to: "pages#home"
+  resources :users do
+    resources :bookings
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

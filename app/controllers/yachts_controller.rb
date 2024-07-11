@@ -8,18 +8,18 @@ class YachtsController < ApplicationController
   #   @yacht = Yacht.find(params[:id])
   # end
 
-  # def new
-  #   @yacht = Yacht.new
-  # end
-  
-  # def create
-  #   @yacht = Yacht.new(yacht_params)
-  #   if @yacht.save
-  #     redirect_to yacht_path(@yacht)
-  #   else
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
+  def new
+    @yacht = Yacht.new
+  end
+
+  def create
+    @yacht = Yacht.new(yacht_params)
+    if @yacht.save
+      redirect_to yacht_path(@yacht)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 
   # def destroy
   #   @yacht.destroy
@@ -28,12 +28,12 @@ class YachtsController < ApplicationController
 
   # private
 
-  # def set_yacht
-  #   @yacht = Yacht.find(params[:id])
-  # end
- 
-  # def yacht_params
-  #   params.require(:list).permit(:name, :photo)
-  # end
-  
+  def set_yacht
+    @yacht = Yacht.find(params[:id])
+  end
+
+  def yacht_params
+    params.require(:list).permit(:name, :photo)
+  end
+
 end
