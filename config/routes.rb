@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :yacht
+  resources :yachts
   root to: "pages#home"
-  resources :user do
+  resources :users do
     resources :bookings
   end
 
