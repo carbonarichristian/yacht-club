@@ -1,2 +1,44 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="background-container">
+  <div class="overlay"></div>
+  <div class="content container">
+    <div class="text p-3">
+      <span data-controller="typed">
+        <h1>
+          Experience the ultimate Yacht Adventure
+        </h1>
+        <p>
+          Escape the daily grind and set sail on an unforgettable adventure with our luxury yacht rental
+        </p>
+      </span>
+    </div>
+    <div class="link">
+      <%= link_to("Get started",  new_user_registration_path, class: "btn btn-light p-4") %>
+    </div>
+  </div>
+  <div class="footer-bg d-flex justify-content-center">
+    <div class="footer-div">
+      <div class="footer-icon">
+        <i class="fa-solid fa-anchor"></i>
+      </div>
+      <div class="footer-text">
+        Tell us what you need, we will do the rest
+      </div>
+    </div>
+    <div class="footer-div">
+      <div class="footer-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div class="footer-text">
+        New to sailing? We've got you covered!
+      </div>
+    </div>
+    <div class="footer-div">
+      <div class="footer-icon">
+        <i class="fa-solid fa-compass"></i>
+      </div>
+      <div class="footer-text">
+        Win a sailing holiday
+      </div>
+    </div>
+  </div>
+</div>
