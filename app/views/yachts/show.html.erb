@@ -1,0 +1,16 @@
+
+<div class="container mt-5">
+  <h1 class="text-center">Yacht Details</h1>
+
+  <div class="card mt-4">
+    <div class="card-body">
+      <h2 class="card-title"><%= @yacht.name %></h2>
+      <p class="card-text"><strong>Model:</strong> <%= @yacht.model %> ft</p>
+      <p class="card-text"><strong>Price per day:</strong> <%= number_to_currency(@yacht.price) %></p>
+    </div>
+    <div class="card-footer">
+      <a href="<%= edit_yacht_path(@yacht) %>" class="btn btn-primary">Edit</a>
+      <a href="<%= yachts_path %>" class="btn btn-secondary">Back to All Yachts</a>
+    </div>
+  </div>
+</div>
