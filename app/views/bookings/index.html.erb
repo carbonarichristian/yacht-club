@@ -1,0 +1,28 @@
+<!-- Include Bootstrap and Font Awesome CSS files in your layout -->
+
+<h1 class="mb-4">Your Yacht Bookings</h1>
+
+<div class="row">
+  <% @bookings.each do |booking| %>
+    <div class="col-lg-4 col-md-6 mb-4">
+      <div class="card h-100 border-2 shadow-sm rounded">
+        <div class="card text-white bg-dark mb-3" style="max-width: 100rem;">
+          <div class="card-header">Booking id#<%=booking.id%></div>
+          <div class="card-body">
+            <h5 class="card-title">Dark card title</h5>
+            <p class="card-text">
+            <strong>Date:</strong> <%= booking.from_date.strftime('%Y-%m-%d') %> to <%= booking.to_date.strftime('%Y-%m-%d') %><br>
+            <strong>Yacht ID:</strong> <%= booking.yacht_id %><br>
+          </p>
+        </div>
+        <div class="card-footer bg-light">
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i> Cancel Booking</a>
+          <a href="#" class="btn btn-sm btn-outline-info ml-2"><i class="fas fa-edit"></i> Edit Booking</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  <% end %>
+</div>
