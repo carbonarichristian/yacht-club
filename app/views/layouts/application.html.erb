@@ -12,14 +12,29 @@
     <link href="https://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
     <link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
     <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-    
   </head>
 
   <body>
-
-
-    <body>
+    <% if !user_signed_in? %>
+      <div class="nav">
+        <div class="container">
+          <ul class="pull-left">
+            <li><%= link_to("", root_path, class: "fa-solid fa-sailboat", id: "logo") %></li>
+            <li><a href="#">Name</a></li>
+            <li><a href="#">Browse</a></li>
+          </ul>
+          <ul class="pull-right">
+            <li><%= link_to("Sign up",  new_user_registration_path) %></li>
+            <li><%= link_to("Log in", new_user_session_path) %></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+        </div>
+      </div>
+    <% end %>
 
 
     <%= yield %>
