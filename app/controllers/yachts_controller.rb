@@ -32,7 +32,12 @@ class YachtsController < ApplicationController
       render :edit, status: :unprocessable_entity
     end
    end
-   
+
+   def destroy
+    @yacht.destroy
+    redirect_to yachts_path
+   end
+
   private
 
   def set_yacht

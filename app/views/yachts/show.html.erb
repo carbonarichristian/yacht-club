@@ -1,16 +1,41 @@
-
 <div class="container mt-5">
   <h1 class="text-center">Yacht Details</h1>
 
   <div class="card mt-4">
     <div class="card-body">
       <h2 class="card-title"><%= @yacht.name %></h2>
-      <p class="card-text"><strong>Model:</strong> <%= @yacht.model %> ft</p>
-      <p class="card-text"><strong>Price per day:</strong> <%= number_to_currency(@yacht.price) %></p>
+      <p class="card-text"><strong><i class="fas fa-ship"></i> Model:</strong> <%= @yacht.model %> ft</p>
+      <p class="card-text"><strong><i class="fas fa-dollar-sign"></i> Price per day:</strong> <%= number_to_currency(@yacht.price) %></p>
     </div>
-    <div class="card-footer">
-      <a href="<%= edit_yacht_path(@yacht) %>" class="btn btn-primary">Edit</a>
-      <a href="<%= yachts_path %>" class="btn btn-secondary">Back to All Yachts</a>
+    <div class="card-footer d-flex justify-content-between">
+      <a href="<%= edit_yacht_path(@yacht) %>" class="btn btn-primary">
+        <i class="fas fa-edit"></i> Edit
+      </a>
+      <a href="<%= yachts_path %>" class="btn btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back to All Yachts
+      </a>
+      <%= button_to yacht_path(@yacht), method: :delete, data: { confirm: "Are you sure you want to delete this yacht?" }, class: "btn btn-danger" do %>
+        <i class="fas fa-trash-alt"></i> Delete
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <div class="card mt-4">
+    <div class="card-body">
+      <h3 class="card-title">Book This Yacht</h3>
+      <%= form_with(model: [@yacht, @yacht.bookings.build], local: true) do |form| %>
+        <div class="form-group">
+          <%= form.label :from_date, "Start Date" %>
+          <%= form.date_field :from_date, class: "form-control", required: true %>
+        </div>
+        <div class="form-group">
+          <%= form.label :to_date, "End Date" %>
+          <%= form.date_field :to_date, class: "form-control", required: true %>
+        </div>
+        <%= form.submit "Submit Booking", class: "btn btn-success" %>
+      <% end %>
     </div>
   </div>
 </div>
