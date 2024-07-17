@@ -1,24 +1,45 @@
 class BookingsController < ApplicationController
-  def index
-    @bookings = current_user.bookings
+  before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @bookings = Booking.all
+  end
+
+  def show
+  end
+
+  def new
+    @booking = Booking.new
   end
 
   def create
-    @yacht = Yacht.find(params[:yacht_id])
-    @booking = @yacht.bookings.create(booking_params)
-    @booking.user = current_user
+    @booking = Booking.new(booking_params)
+    @booking.save
+  end
 
-    if @booking.save
-      redirect_to root_path, notice: 'Booking was successfully created.'
+  def edit
+  end
+
+  def update
+    if @booking.update(booking_params)
+      redirect_to @booking, notice: 'Booking was successfully updated.'
     else
-      render 'yachts/show'
+      render :edit
     end
+  end
+
+  def destroy
+    @booking.destroy
+    redirect_to bookings_url, notice: 'Booking was successfully destroyed.'
   end
 
   private
 
+  def set_booking
+    @booking = Booking.find(params[:id])
+  end
+
   def booking_params
-    params.require(:booking).permit(:from_date, :to_date)
+    params.require(:booking).permit(:from_date, :to_date, :user_id, :yacht_id)
   end
 end
