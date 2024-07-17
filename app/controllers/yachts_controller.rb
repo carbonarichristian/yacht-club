@@ -1,12 +1,12 @@
 class YachtsController < ApplicationController
+  before_action :set_yacht, only: [:show, :edit, :update, :destroy]
 
   def index
     @yachts = Yacht.all
   end
 
-   def show
-     @yacht = Yacht.find(params[:id])
-   end
+  def show
+  end
 
   def new
     @yacht = Yacht.new
@@ -15,28 +15,27 @@ class YachtsController < ApplicationController
   def create
     @yacht = Yacht.new(yacht_params)
     if @yacht.save
-      redirect_to yacht_path(@yacht)
+      redirect_to @yacht, notice: 'Yacht was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      render :new
     end
   end
 
   def edit
-    @yacht = Yacht.find(params[:id])
   end
 
-   def update
-    if yacht.update(yacht_params)
-      redirect_to yacht_path(@yacht)
+  def update
+    if @yacht.update(yacht_params)
+      redirect_to @yacht, notice: 'Yacht was successfully updated.'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit
     end
-   end
+  end
 
-   def destroy
+  def destroy
     @yacht.destroy
-    redirect_to yachts_path
-   end
+    redirect_to yachts_url, notice: 'Yacht was successfully destroyed.'
+  end
 
   private
 
@@ -45,7 +44,6 @@ class YachtsController < ApplicationController
   end
 
   def yacht_params
-    params.require(:list).permit(:name, :photo)
+    params.require(:yacht).permit(:name, :model, :price, :photo)
   end
-
 end
