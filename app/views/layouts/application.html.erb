@@ -31,10 +31,10 @@
         <div class="nav-1">
           <div class="pull-left">
             <%= link_to("", root_path, class: "fa-solid fa-sailboat", id: "logo") %>
-            <p>Welcome, <%= current_user.email %>!</p>
+            <p>Welcome, <%= current_user.first_name %>!</p>
             <%= link_to("Browse", yachts_path) %>
           </div>
-          <div class="pull-right">
+          <div class="pull-right" id="pull-right-logged-in">
             <%= link_to 'Logout', destroy_user_session_path, data: { turbo_confirm: 'Are you sure?', turbo_method: :delete } %>
           </div>
         </div>
