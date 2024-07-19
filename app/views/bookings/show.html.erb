@@ -12,17 +12,52 @@
       <p class="card-text text-center"><strong><i class="fas fa-ship"></i> Model:</strong> <%= @yacht.model %></p>
       <p class="card-text text-center"><strong><i class="fas fa-dollar-sign"></i> Price per day:</strong> <%= number_to_currency(@yacht.price) %></p>
     </div>
-    <div class="card-footer d-flex justify-content-between bg-light">
-      <a href="<%= edit_yacht_path(@yacht) %>" class="btn btn-primary btn-lg">
-        <i class="fas fa-edit"></i> Edit
-      </a>
-      <a href="<%= yachts_path %>" class="btn btn-secondary btn-lg">
-        <i class="fas fa-arrow-left"></i> Back to All Yachts
-      </a>
-      <%= button_to yacht_path(@yacht), method: :delete, data: { confirm: "Are you sure you want to delete this yacht?" }, class: "btn btn-danger btn-lg" do %>
-        <i class="fas fa-trash-alt"></i> Delete
-      <% end %>
-    </div>
   </div>
 </div>
 
+<div class="container">
+  <div class="row">
+    <div class="text-center">
+      <% if @booking.status == "Pending host validation"%>
+      <h3>  <strong><i class="fa fa-star" aria-hidden="true"></i> We are waiting for <%= @booking.yacht.user.first_name %> to confirm your request </strong> <i class="fa fa-star" aria-hidden="true"></i></h3>
+      <h3> So... stay tuned! </h3>
+      <% end %>
+      <hr>
+
+        <div class="row">
+          <div class="col-md-6">
+              <div class="text-left">
+              <h4> Reminder of your <strong id="red-word">booking details</strong></h4>
+              <br>
+                <table>
+                 <tbody>
+                    <tr>
+                      <td> <h4><i class="fa fa-heart" aria-hidden="true"></i> </h4></td>
+                      <td><h4> &nbsp; Your host is <strong> <%= @booking.yacht.user.first_name %> </strong></h4></td>
+                    </tr>
+                    <tr>
+                      <td><h4> <i class="fa fa-bed" aria-hidden="true"></i></h4></td>
+                      <td><h4> &nbsp; You have requested to book this yacht from : <br>  &nbsp;   <%= @booking.from_date %> to <%= @booking.to_date %> </h4></td>
+                    </tr>
+                    <tr>
+                      <td><h4> <i class="fa fa-thumbs-up" aria-hidden="true"></i></h4></td>
+                      <td><h4> &nbsp; The total price for your booking is <%= @booking.value %> €</h4></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+          </div>
+        </div>
+
+
+      <% if @booking.status == "Pending guest request"%>
+      <%= simple_form_for(@booking) do |f| %>
+      <%= f.submit "Confirm my booking", class: "btn btn-danger btn-lg" %>
+      <% end %>
+      <% end %>
+      <hr>
+    <%= link_to "See my next stays", bookings_path, class:"btn btn-default btn-lg " %>
+    </div>
+  </div>
+</div>
+</div>

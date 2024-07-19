@@ -1,11 +1,25 @@
 class YachtsController < ApplicationController
   before_action :set_yacht, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:show]
 
   def index
     @yachts = Yacht.all
   end
 
   def show
+    @booking = Booking.new
+    @from_date = params[:from_date]
+    @to_date = params[:to_date]
+    if (@from_date && @to_date)
+      from = @from_date.split("/")
+      to = @to_date.split("/")
+      start = Date.new(from[2], from[1], from[0])
+      finish = Date.new(to[2], to[1], to[0])
+      @days = (finish - start).to_f
+      @total_price = (@days * @yacht.price).to_f
+    end
+    @yacht = Yacht.find(params[:id])
+    @bookings = @yacht.bookings
   end
 
   def new
@@ -13,9 +27,10 @@ class YachtsController < ApplicationController
   end
 
   def create
-    @yacht = Yacht.new(yacht_params)
+    @yacht = Yacht.create(yacht_params)
+    @yacht.user = current_user
     if @yacht.save
-      redirect_to @yacht, notice: 'Yacht was successfully created.'
+      redirect_to yacht_path(@yacht) , notice: 'Yacht was successfully created.'
     else
       render :new
     end
