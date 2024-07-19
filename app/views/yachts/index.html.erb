@@ -8,11 +8,22 @@
 <div class="neighborhood-guides">
     <div class="container">
         <h2>Neighborhood Yachts</h2>
-        <p></p>
-        <div class="row">
-            <div class="col-md-4">
-            <div class="card-category">
-            </div>
-        </div>
+          <div class="cards">
+            <% if @yachts.length != 0 %>
+              <% @yachts.each do |yacht| %>
+                <% background_image = yacht.photo %>
+                <div class="card-trip">
+                  <%= image_tag background_image, alt: "background yacht image" %>
+                  <div class="card-trip-infos">
+                    <div class="card-trip-details">
+                      <h2><%= link_to(yacht.name, yacht_path(yacht)) %></h2>
+                      <p><%= yacht.model %></p>
+                    </div>
+                    <h2 class="card-trip-pricing">$<%= yacht.price %></h2>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
     </div>
 </div>
