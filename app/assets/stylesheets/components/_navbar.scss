@@ -23,8 +23,7 @@
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  width: 150px;
-
+  gap: 30px;
   p {
     margin-bottom: 0;
   }
@@ -34,6 +33,14 @@
   width: 150px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-right: 50px;
+}
+
+#pull-right-logged-in {
+  width: 150px;
+  display: flex;
+  justify-content: center;
   align-items: center;
   margin-right: 50px;
 }
