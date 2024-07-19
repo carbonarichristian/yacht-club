@@ -3,8 +3,15 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
  resources :yachts do
-    resources :bookings, only: [:new, :create, :index, :show, :edit, :update]
+    resources :bookings, only: [:create]
  end
+
+ resources :bookings, only: [:index, :show, :destroy, :update]
+
+ namespace :user do
+    resources :yachts, only: [:index]
+    resources :bookings, only: [:index, :edit, :update]
+  end
 
   get "up" => "rails/health#show", as: :rails_health_check
 end
