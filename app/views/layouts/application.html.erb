@@ -15,30 +15,70 @@
   </head>
 
   <body>
-    <% if !user_signed_in? %>
-      <div class="nav-1">
-        <div class="pull-left">
-          <%= link_to("", root_path, class: "fa-solid fa-sailboat", id: "logo") %>
-          <p>Welcome!</p>
+    <div class="main-content">
+      <% if !user_signed_in? %>
+        <div class="nav-1">
+          <div class="pull-left">
+            <%= link_to("", root_path, class: "fa-solid fa-sailboat", id: "logo") %>
+            <p>Welcome!</p>
+          </div>
+          <div class="pull-right">
+            <%= link_to("Sign up",  new_user_registration_path) %></li>
+            <%= link_to("Log in", new_user_session_path) %></li>
+          </div>
         </div>
-        <div class="pull-right">
-          <%= link_to("Sign up",  new_user_registration_path) %></li>
-          <%= link_to("Log in", new_user_session_path) %></li>
+      <% else %>
+        <div class="nav-1">
+          <div class="pull-left">
+            <%= link_to("", root_path, class: "fa-solid fa-sailboat", id: "logo") %>
+            <p>Welcome, <%= current_user.first_name %>!</p>
+            <%= link_to("Browse", yachts_path) %>
+          </div>
+          <div class="pull-right" id="pull-right-logged-in">
+            <%= link_to 'Logout', destroy_user_session_path, data: { turbo_confirm: 'Are you sure?', turbo_method: :delete } %>
+          </div>
         </div>
-      </div>
-    <% else %>
-      <div class="nav-1">
-        <div class="pull-left">
-          <%= link_to("", root_path, class: "fa-solid fa-sailboat", id: "logo") %>
-          <p>Welcome, <%= current_user.email %>!</p>
-          <%= link_to("Browse", yachts_path) %>
-        </div>
-        <div class="pull-right">
-          <%= link_to 'Logout', destroy_user_session_path, data: { turbo_confirm: 'Are you sure?', turbo_method: :delete } %>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <div id="about">
+          <h3>About Us</h3>
+          <p>We provide the best yacht rental services, ensuring a luxurious and unforgettable experience on the water.</p>
+        </div>
+        <div id="links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><%= link_to("Home", yachts_path) %></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#fleet">Fleet</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div id="contact">
+          <h3>Contact Us</h3>
+          <p>123 Yacht St, Marina Bay, Ocean City</p>
+          <p>Email: info@yachtrentals.com</p>
+          <p>Phone: +61 456 7890</p>
+        </div>
+        <div id="follow">
+          <h3>Follow Us</h3>
+          <div id="follow-links">
+            <%= link_to("", "#",  class:"fa-brands fa-facebook") %>
+            <%= link_to("", "#", class: "fa-brands fa-instagram") %>
+            <%= link_to("", "#",class: "fa-brands fa-linkedin") %>
+          </div>
+        </div>
+
+      </div>
+      <hr>
+      <div id="copyright">
+        <p>&copy; 2024 YachtClub. All rights reserved.</p>
+      </div>
+    </footer>
   </body>
 </html>
