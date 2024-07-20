@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
       @booking.value = 0
     end
     if @booking.save
-      redirect_to bookings_url, notice: 'Booking was successfully created.'
+      redirect_to bookings_path, notice: 'Booking was successfully created.'
     else
       redirect_to yacht_path(@yacht), notice: 'Booking was not created.'
     end
@@ -45,7 +45,7 @@ class BookingsController < ApplicationController
 
   def destroy
     @booking.destroy
-    redirect_to bookings_url, notice: 'Booking was successfully destroyed.'
+    redirect_to bookings_path, notice: 'Booking was successfully destroyed.'
   end
 
   private

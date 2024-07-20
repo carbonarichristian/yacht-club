@@ -1,28 +1,29 @@
-<h1 class="mb-4">Your Yacht Bookings</h1>
-
-
-<div class="row">
-  <% @bookings.each do |booking| %>
-    <div class="col-lg-4 col-md-6 mb-4">
-      <div class="card h-100 border-2 shadow-sm rounded">
-        <div class="card text-white bg-dark mb-3" style="max-width: 100rem;">
-          <div class="card-header">Booking id#<%= booking.id %></div>
-          <div class="card-body">
-            <h5 class="card-title">Pack Your Bags! </h5>
-            <p class="card-text">
-              <strong>Date:</strong> <%= booking.from_date.strftime('%Y-%m-%d') %> to <%= booking.to_date.strftime('%Y-%m-%d') %><br>
-              <strong>Yacht:</strong> <%= booking.yacht.name %><br>
-            </p>
-          </div>
-          <div class="card-footer bg-light">
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i> Cancel Booking</a>
-            <a href="#" class="btn btn-sm btn-outline-booking ml-2"><i class="fas fa-edit"></i> Edit Booking</a>
-            <%=link_to 'Edit Booking', edit_user_booking_path(booking), class: 'btn btn-sm btn-outline-danger'%>
+<div class="jumbotron header">
+  <div class="container">
+    <h1 id="bookings-h1"><%= current_user.first_name.capitalize! %>, here are your bookings</h1>
+  </div>
+</div>
+<div class="content">
+    <div class="container">
+      <% @bookings.each do |booking| %>
+        <% yacht_image = booking.yacht.photo %>
+        <div class="card-product">
+          <%= image_tag(yacht_image, alt: "yacht image") %>
+          <div class="card-product-infos">
+            <div class="card-product-details">
+              <h2>Reservation details</h2>
+              <h4><strong>Booking ID: </strong> <%= booking.id %><br></h4>
+              <h4><strong>Yacht name: </strong> <%= booking.yacht.name %><br></h4>
+              <h4><strong>Reservation name: </strong> <%= current_user.first_name %><br></h4>
+              <h4><strong>Date: </strong> <%= booking.from_date.strftime('%Y-%m-%d') %> to <%= booking.to_date.strftime('%Y-%m-%d') %><br></h4>
+              <h4><strong>Total price: </strong>€ <%= booking.value %></h4>
+            </div>
+            <div class="card-product-actions">
+              <%= link_to "Cancel booking", booking_path(booking), data: { confirm: "Are you sure?", turbo_method: :delete }, class: "btn btn-danger" %>
+              <%= link_to "Edit booking", edit_user_booking_path(booking), data: { confirm: "Are you sure?" }, class: "btn btn-primary" %>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
 </div>
