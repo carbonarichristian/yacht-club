@@ -1,12 +1,16 @@
 class User::BookingsController < ApplicationController
-  before_action :set_booking, only: [:update]
+  before_action :set_booking, only: [:edit, :update]
   def index
     @yachts = current_user.yachts
   end
 
+
+  def edit
+  end
+
   def update
     @booking.update(set_params)
-    redirect_to my_bookings_path
+    redirect_to bookings_path(@booking)
   end
 
 

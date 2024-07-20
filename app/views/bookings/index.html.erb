@@ -8,8 +8,11 @@
           <div class="card-product">
             <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
             <div class="card-product-infos">
-              <h2>Product name</h2>
-              <p>Product description with <strong>relevant info</strong> only.</p>
+              <h2></h2>
+                <p class="card-text">
+                <strong>Date:</strong> <%= booking.from_date.strftime('%Y-%m-%d') %> to <%= booking.to_date.strftime('%Y-%m-%d') %><br>
+                <strong>Yacht:</strong> <%= booking.yacht.name %><br>
+              </p>
             </div>
           </div>
     </div>

@@ -1,13 +1,13 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
-  def new
-    @yacht = Yacht.find(params[:yacht_id])
-    @booking = @yacht.bookings.new
-    @booking.user = current_user
-    @booking.value = @booking.value
-    @total_price = @booking.value.to_f * (@booking.to_date - @booking.from_date).to_f
-  end
+  # def new
+  #   @yacht = Yacht.find(params[:yacht_id])
+  #   @booking = @yacht.bookings.new
+  #   @booking.user = current_user
+  #   @booking.value = @booking.value
+  #   @total_price = @booking.value.to_f * (@booking.to_date - @booking.from_date).to_f
+  # end
   def create
     @yacht = Yacht.find(params[:yacht_id])
     @booking = Booking.new(booking_params)
@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
       @booking.value = 0
     end
     if @booking.save
-      redirect_to roots_path, notice: 'Booking was successfully created.'
+      redirect_to root_path, notice: 'Booking was successfully created.'
     else
       redirect_to yacht_path(@yacht), notice: 'Booking was not created.'
     end
@@ -36,7 +36,7 @@ class BookingsController < ApplicationController
 
   def edit
   end
-  
+
   def update
     @booking.status = "Pending host validation"
     @booking.save!
