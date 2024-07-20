@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
       @booking.value = 0
     end
     if @booking.save
-      redirect_to root_path, notice: 'Booking was successfully created.'
+      redirect_to bookings_url, notice: 'Booking was successfully created.'
     else
       redirect_to yacht_path(@yacht), notice: 'Booking was not created.'
     end
