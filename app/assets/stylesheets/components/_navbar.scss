@@ -37,12 +37,26 @@
   margin-right: 50px;
 }
 
+.show-add {
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  justify-content: space-between;
+  padding-left: 300px;
+  padding-right: 300px;
+  display: inline-block;
+  a {
+    margin-right: 24px;
+  }
+}
+
 #pull-right-logged-in {
   width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 50px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 .nav-1 .pull-right a {
@@ -57,3 +71,4 @@
 #logo {
   font-size: x-large;
 }
+
