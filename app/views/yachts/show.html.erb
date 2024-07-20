@@ -26,18 +26,20 @@
   </div>
 </div>
 
-<div class="container py-5">
-  <div class="row">
-    <div class="col-12 col-md-6 offset-lg-3">
-      <div class="bg-white rounded p-3 shadow">
-        <h3>Book this yacht</h3>
-        <%= simple_form_for [@yacht, @booking] do |f| %>
-          <%= f.input :from_date %>
-          <%= f.input :to_date %>
-          <p> <strong>Total price: <span id="value"><%= @booking.value %> €</span></strong></p>
-          <%= f.submit class: 'btn btn-success' %>
-        <% end %>
+<% if current_user != @yacht.user %>
+  <div class="container py-5">
+    <div class="row">
+      <div class="col-12 col-md-6 offset-lg-3">
+        <div class="bg-white rounded p-3 shadow">
+          <h3>Book this yacht</h3>
+          <%= simple_form_for [@yacht, @booking] do |f| %>
+            <%= f.input :from_date %>
+            <%= f.input :to_date %>
+            <p><strong>Total price: <span id="value"><%= @booking.value %> €</span></strong></p>
+            <%= f.submit class: 'btn btn-success' %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
