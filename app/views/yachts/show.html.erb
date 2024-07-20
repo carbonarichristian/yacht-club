@@ -34,7 +34,7 @@
         <%= simple_form_for [@yacht, @booking] do |f| %>
           <%= f.input :from_date %>
           <%= f.input :to_date %>
-          <p> <strong>Total price: <span id="total_price"><%= @total_price %> €</span></strong></p>
+          <p> <strong>Total price: <span id="value"><%= @total_price %> €</span></strong></p>
           <%= f.submit class: 'btn btn-success' %>
         <% end %>
       </div>
