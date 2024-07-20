@@ -1,0 +1,26 @@
+<div class="text-center">
+  <h2>Here are your <strong>yachts</strong> you have for rent!</h2>
+</div>
+
+
+<div class="wrapper-dashboard padded">
+  <ul class="list-unstyled">
+    <% @yachts.each do |yacht| %>
+    <li class="padded dashboard">
+
+      <div class='product-body'>
+
+        <h2><strong><%= yacht.name %></strong></h2>
+        <h4>Model: <strong><%= yacht.model %></strong></h4>
+        <h4>Price: <strong><%= yacht.price %>€/night </strong></h4>
+      </div>
+
+      <ul class="list-inline hidden-sm hidden-xs">
+        <%= link_to "Edit this yacht", edit_yacht_path(yacht), class:"btn btn-default-black"%>
+      </ul>
+
+    </li>
+      <hr>
+      <% end %>
+  </ul>
+</div>
