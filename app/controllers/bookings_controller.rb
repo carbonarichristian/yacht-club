@@ -1,31 +1,46 @@
 class BookingsController < ApplicationController
   before_action :set_booking, only: [:show, :edit, :update, :destroy]
 
+  def new
+    @yacht = Yacht.find(params[:yacht_id])
+    @booking = @yacht.bookings.new
+    @booking.user = current_user
+    @booking.value = @booking.value
+    @total_price = @booking.value.to_f * (@booking.to_date - @booking.from_date).to_f
+  end
+  def create
+    @yacht = Yacht.find(params[:yacht_id])
+    @booking = Booking.new(booking_params)
+    @booking.yacht = @yacht
+    @booking.user = current_user
+    @booking.status = "Pending host validation"
+    if @booking.from_date && @booking.to_date
+      @booking.value = @booking.yacht.price.to_f * (@booking.to_date - @booking.from_date).to_f
+    else
+      @booking.value = 0
+    end
+    if @booking.save
+      redirect_to roots_path, notice: 'Booking was successfully created.'
+    else
+      redirect_to yacht_path(@yacht), notice: 'Booking was not created.'
+    end
+  end
+
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where(user_id: current_user.id)
   end
 
   def show
-  end
-
-  def new
-    @booking = Booking.new
-  end
-
-  def create
-    @booking = Booking.new(booking_params)
-    @booking.save
+    @yacht = @booking.yacht
   end
 
   def edit
   end
-
+  
   def update
-    if @booking.update(booking_params)
-      redirect_to @booking, notice: 'Booking was successfully updated.'
-    else
-      render :edit
-    end
+    @booking.status = "Pending host validation"
+    @booking.save!
+    redirect_to bookings_path(@booking)
   end
 
   def destroy

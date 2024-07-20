@@ -23,35 +23,35 @@ yachts = [
     model: 'Azimut 66 Flybridge',
     price: 5000.00,
     user: user,
-    photo: 'https://www.pexels.com/photo/white-yacht-on-running-on-blue-body-of-water-during-daytime-163236/'
+    photo: 'https://images.pexels.com/photos/163236/luxury-yacht-boat-speed-water-163236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     name: 'Wave Rider',
     model: 'Princess V65',
     price: 4700.00,
     user: user_1,
-    photo: 'https://www.pexels.com/photo/white-and-blue-yacht-on-body-of-water-843633/'
+    photo: 'https://images.pexels.com/photos/42091/pexels-photo-42091.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     name: 'Luxury Cruiser',
     model: 'Ferretti 720',
     price: 5500.00,
     user: user_1,
-    photo: 'https://www.pexels.com/photo/white-speedboat-on-body-of-water-296278/'
+    photo: 'https://images.pexels.com/photos/296278/pexels-photo-296278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     name: 'Dream Catcher',
     model: 'Pershing 8X',
     price: 5300.00,
     user: user_2,
-    photo: 'https://www.pexels.com/photo/white-yacht-docked-on-port-144634/'
+    photo: 'https://images.pexels.com/photos/144634/pexels-photo-144634.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   },
   {
     name: 'Nautical Adventure',
     model: 'Sanlorenzo SL86',
     price: 6000.00,
     user: user_2,
-    photo: 'https://www.pexels.com/photo/photo-of-boat-docked-on-pier-2775528/'
+    photo: 'https://images.pexels.com/photos/2775528/pexels-photo-2775528.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
   }
 ]
 
