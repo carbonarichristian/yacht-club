@@ -1,27 +1,16 @@
-<h1 class="mb-4">Your Yacht Bookings</h1>
-
-
-<div class="row">
-  <% @bookings.each do |info| %>
-    <div class="col-lg-4 col-md-6 mb-4">
-      <div class="card h-100 border-2 shadow-sm rounded">
-        <div class="card text-white bg-dark mb-3" style="max-width: 100rem;">
-          <div class="card-header">Booking id#<%= info.id %></div>
-          <div class="card-body">
-            <h5 class="card-title">Pack Your Bags! </h5>
-            <p class="card-text">
-              <strong>Date:</strong> <%= info.from_date.strftime('%Y-%m-%d') %> to <%= info.to_date.strftime('%Y-%m-%d') %><br>
-              <strong>Yacht:</strong> <%= info.yacht.name %><br>
-            </p>
+<div class="jumbotron header">
+  <div class="container">
+    <h1 id="bookings-h1"><%= current_user.first_name.capitalize! %>, here are your bookings</h1>
+  </div>
+</div>
+<div class="content">
+    <div class="container">
+          <div class="card-product">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+            <div class="card-product-infos">
+              <h2>Product name</h2>
+              <p>Product description with <strong>relevant info</strong> only.</p>
+            </div>
           </div>
-          <div class="card-footer bg-light">
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-sm btn-outline-danger"><i class="fas fa-trash-alt"></i> Cancel Booking</a>
-            <a href="#" class="btn btn-sm btn-outline-info ml-2"><i class="fas fa-edit"></i> Edit Booking</a>
-          </div>
-        </div>
-      </div>
     </div>
-  <% end %>
 </div>
