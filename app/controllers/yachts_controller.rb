@@ -7,6 +7,7 @@ class YachtsController < ApplicationController
   end
 
   def show
+    @yacht = Yacht.find(params[:id])
     @booking = Booking.new
     @from_date = params[:from_date]
     @to_date = params[:to_date]
@@ -18,7 +19,6 @@ class YachtsController < ApplicationController
       @days = (finish - start).to_f
       @total_price = (@days * @yacht.price).to_f
     end
-    @yacht = Yacht.find(params[:id])
     @bookings = @yacht.bookings
   end
 
