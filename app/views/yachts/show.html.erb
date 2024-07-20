@@ -16,6 +16,12 @@
       <a href="<%= yachts_path %>" class="btn btn-secondary">
         <i class="fas fa-arrow-left"></i> Back to All Yachts
       </a>
+      <% if current_user == @yacht.user %>
+        <div>
+          <%= link_to 'Edit', edit_yacht_path(@yacht), class: 'btn btn-warning mr-2' %>
+          <%= link_to 'Delete', yacht_path(@yacht), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
@@ -34,5 +40,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>
