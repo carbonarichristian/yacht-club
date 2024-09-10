@@ -4,20 +4,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.nav-1:before {
-  content: none;
-  display: none;
-}
-
-.nav-1:after {
-  content: none;
-  display: none;
+  padding: 0 40px;
 }
 
 .nav-1 .pull-left {
-  margin-left: 50px;
   font-size: 20px;
   display: flex;
   justify-content: space-between;
@@ -34,29 +24,21 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right: 50px;
 }
 
-.show-add {
+.nav-1 .show-add {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 40px;
   font-size: 15px;
   font-weight: bold;
   text-transform: uppercase;
   justify-content: space-between;
-  padding-left: 300px;
-  padding-right: 300px;
-  display: inline-block;
-  a {
-    margin-right: 24px;
-  }
 }
 
-#pull-right-logged-in {
-  width: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 10px;
-  margin-left: 10px;
+#pull-right {
+  width: fit-content;
 }
 
 .nav-1 .pull-right a {
@@ -71,4 +53,3 @@
 #logo {
   font-size: x-large;
 }
-
