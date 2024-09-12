@@ -3,7 +3,7 @@
     <h1 id="bookings-h1"><%= current_user.first_name.capitalize! %>, here are your bookings</h1>
   </div>
 </div>
-<div class="container">
+<div class="container content">
   <% @bookings.each do |booking| %>
     <% yacht_image = booking.yacht.photo %>
     <div class="card-product">
